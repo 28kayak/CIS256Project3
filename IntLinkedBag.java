@@ -122,4 +122,16 @@ public class IntLinkedBag implements Cloneable
 		answer.addAll(b2);
 		return answer;
 	}
+	public String toString()
+	{
+		String text;
+		
+		text = "TOSTRING ‚¾‚æ"; 
+		return text;
+	}
+	public String toString2()
+	{
+		return ("manyNode:"+String.valueOf(this.manyNodes)+" head:"+this.head.toString2());
+
+	}
 }//class

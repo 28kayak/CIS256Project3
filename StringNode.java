@@ -17,6 +17,10 @@ public class StringNode
 	{
 		return data;
 	}
+	public StringNode getLink()
+	{
+		return link;
+	}
 	public static StringNode listCopy(StringNode source)
 	{
 		StringNode copyHead;
@@ -118,7 +122,7 @@ public class StringNode
 		
 		return cursor;
 	}
-	public static StringNode listSearch(StringNode head, StringNode target)
+	public static StringNode listSearch(StringNode head, String target)
 	{
 		StringNode cursor;
 		
@@ -146,11 +150,99 @@ public class StringNode
 	//added method
 	public static StringNode addToEnd(StringNode head, String newVal)
 	{
+		StringNode cursor;
+		StringNode previouscursor;
+		
+		previouscursor=head;
+		
+		for(cursor = head; cursor != null; cursor = cursor.link)
+		{
+			previouscursor = cursor;
+		}
+		
+		previouscursor.link = new StringNode(newVal,  null);
+		return head;
 		
 	}
-	public static int postion(StringNode head, String newVal)
+	public static int position(StringNode head, String newVal)
 	{
+		StringNode cursor;
+		int position = -1;
+		for(cursor = head; cursor != null; cursor =cursor.link)
+		{
+			position++;
+			if(newVal == cursor.data)
+			{
+				return position;
+			}
+			
+		}
+		return -1;
+	}
+	public String toStringNode()
+	{
+		if(this.link == null)
+		{
+			if(this.data == null)
+			{
+				return "lastnode:(null, null)";
+			}
+			else
+			{	
+				return "lastnode:(" + data + ",null)";//the last node
+			}
+		}
+		else 
+		{
+			return "nodes:(" + data + ", "+ this.link.toStringNode() + ")";
+		}
+	}
+	public static StringNode getLast(StringNode head)
+	{
+		StringNode cursor;
+		StringNode previouscursor;
+		previouscursor=head;
+		
+		for(cursor = head; cursor != null; cursor = cursor.link)
+		{
+			previouscursor = cursor;
+		}
+		return previouscursor;
+	}
+	public boolean equals(StringNode node)
+	{
+		StringNode cursor1;
+		StringNode cursor2;
+		boolean equals = false;
+		if(StringNode.listLength(this) == StringNode.listLength(node))
+		{
+			System.out.println("length is same");
+			cursor1 = node.link;
+			cursor2 = this.link;
+			for(int index =0; index < StringNode.listLength(this.link); index++)
+			{	System.out.println(index);
+			
+				if(cursor1.getData().equals(cursor2.getData()))
+				{
+					System.out.println("getData() is ture") ;
+				}
+				else
+				{
+					System.out.println("getData() is false");
+					return equals = false;
+				}
+				cursor1 = cursor1.link;
+				cursor2 = cursor2.link;
+			}
+			return equals = true;
+		}
+		else
+		{
+			System.out.println("length is not same");
+			System.out.println("cursor1=" + StringNode.listLength(this.link));
+			System.out.println("cursor2=" + StringNode.listLength(node));
+			return equals = false;
+		}
 		
 	}
-	
 }//class

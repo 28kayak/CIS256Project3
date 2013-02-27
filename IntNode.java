@@ -149,4 +149,56 @@ public class IntNode
 	{
 		link = newLink;
 	}
+	public static int position(IntNode head, int target)
+	{
+		IntNode cursor;
+		int position=-1;
+		
+		for(cursor = head; cursor != null; cursor = cursor.link)
+		{
+			position++;
+			if(target == cursor.data)
+			{
+				return position;
+			}
+		}
+		return -1;
+	}
+	public static IntNode getLast(IntNode head)
+	{
+		IntNode cursor;
+		IntNode previouscursor;
+		int answer;
+		previouscursor=head;
+		answer = 0;
+		for(cursor = head; cursor != null; cursor = cursor.link)
+		{
+			previouscursor = cursor;
+			answer++;
+		}
+		return previouscursor;
+	}
+	public static IntNode addToEnd(IntNode head,int item)
+	{
+		IntNode cursor;
+		IntNode previouscursor;
+		
+		previouscursor=head;
+		
+		for(cursor = head; cursor != null; cursor = cursor.link)
+		{
+			previouscursor = cursor;
+		}
+		
+		previouscursor.link = new IntNode(item,  null);
+		return head;
+	}
+	public String toString2()
+	{
+		if (this.link==null)
+			return "(data:"+String.valueOf(data)+" , link:null)";
+		else
+			return "(data:"+String.valueOf(data)+" , link:"+this.link.toString2()+")";
+		
+	}
 }//class
