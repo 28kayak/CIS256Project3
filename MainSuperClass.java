@@ -43,6 +43,7 @@ public class MainSuperClass
 				{
 					secondList.insertRear(name);
 				}
+				break;
 			case 2:
 				System.out.println("Which list do you want to add? type 1 into fisrst list, 2 into second list");
 				list = scan.nextInt();
@@ -56,11 +57,40 @@ public class MainSuperClass
 				{
 					secondList.insertFront(name);
 				}
+				break;
 			case 3:
+				System.out.println("From whitch list, do you want to remove customer's name?");
+				System.out.println("Type 1 from first list or type 2 from second list");
+				list = scan.nextInt();
+				if(list == 1)
+				{
+					firstList.removeFirst();
+				}
+				else if(list == 2)
+				{
+					secondList.removeFirst();
+				}
+				else
+				{
+					System.out.println("invalid list");
+				}
+				break;
+			case 4: 
+				System.out.println("remove a specific customer name from a list");
+				System.out.println("which list do you want to manupilate? type 1 for first list, tyep 2 for second list");
+		
+			case 5:
+				System.out.println("which list do you want to manupilate? ");
+				System.out.println("type 1 for the first list, tyep 2 the for second list");
 				
 				
-		
-		
+				break;
+			case 6:
+				System.out.println("which list do you want to manupilate? ");
+				System.out.println("type 1 for the first list, tyep 2 the for second list");
+				break;
+			case 7:
+				
 		}
 		
 
